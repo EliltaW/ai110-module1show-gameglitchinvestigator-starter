@@ -4,19 +4,17 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+When I first ran the game, it opened in Streamlimit with Normal difficulty, a range of 1–100, and eight allowed attempts. I noticed that submitting 10 when the secret was 29 gave the hint “Go LOWER,” although it should have said “Go HIGHER.” After the game ended, clicking New Game changed the secret and reset the attempts, but kept the previous guesses and still blocked submissions with a “Game over” message. Claude also reported reproducing a separate comparison bug in Python: the function treated 9 as higher than the text value "29".
 
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| Input                                    | Expected Behavior              | Actual Behavior                 | Console Output / Error                    |
+| ---------------------------------------- | ------------------------------ | ------------------------------- | ----------------------------------------- |
+| Guess 10; secret 29                      | Go HIGHER                      | Go LOWER                        | Wrong hint shown                          |
+| New Game after loss; guess new secret 48 | Clear history and accept guess | Old history kept; guess blocked | "Game over"                               |
+| Claude tested check_guess(9, "29")       | Too Low                        | Too High                        | Reported by Claude; not yet tested myself |
 
 ---
 
